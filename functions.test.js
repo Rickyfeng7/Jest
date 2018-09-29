@@ -53,3 +53,21 @@ test('Admin should be in usernames', () => {
     usernames = ['john', 'karen', 'admin'];
     expect(usernames).toContain('admin')
 })
+
+//working with async data we need to use assertion and pass it the number 
+// when working with async data we need to use expect.assertion() and a return or else any data coming back will pass 
+test('user fetched name should be Leanne Graham', () => {
+    expect.assertions(1);
+    return functions.fetchUser().then(data => {
+        expect(data.name).toEqual('Leanne Graham');
+    });
+});
+
+
+// async Await
+test('user fetched name should be Leanne Graham',async () => {
+    expect.assertions(1);
+    const data = await functions.fetchUser()
+    expect(data.name).toEqual('Leanne Graham');
+
+});
